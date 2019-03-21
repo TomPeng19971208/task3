@@ -42,7 +42,7 @@ class TheServer {
   }
 
   list_tasks() {
-    this.create_session("peng", "P@ssw0rd");
+    //this.create_session("peng", "P@ssw0rd");
     this.send_get(
       "/task",
       (resp) => {
@@ -136,6 +136,7 @@ class TheServer {
   delete_task(task_id) {
     $.ajax('/task/' + task_id, {
       method: "delete",
+      headers: {"x-auth": getCookie("token")},
       dataType: "json",
       contentType: "application/json; charset=UTF-8",
       success: () => {
@@ -169,6 +170,7 @@ class TheServer {
     console.log("update", text);
     $.ajax('/task/' + task.id, {
       method: "put",
+      headers: {"x-auth": getCookie("token")},
       dataType: "json",
       contentType: "application/json; charset=UTF-8",
       data: text,

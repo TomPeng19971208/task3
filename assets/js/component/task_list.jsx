@@ -11,7 +11,7 @@ function TaskList(props) {
     let task = _.map(props.tasks, (tt) => <Task key={tt.id} task={tt} users={props.users} session={props.session} />);
     display =
     <div className="col-12">
-      <table className="table table-striped">
+      <table className="table">
         <thead>
           <tr>
             <th>Title</th>
@@ -32,8 +32,8 @@ function TaskList(props) {
   else {
     display = <div></div>
   }
-  return <div className="row">
-  <p>task_list</p>
+  return <div class="row justify-content-md-center">
+  <p class="col align-self-center">All Tasks</p>
       {display}
   </div>;
 }
@@ -57,8 +57,8 @@ function Task(props) {
     <td>{task.time}</td>
     <td>{user_name}</td>
     <td>
-      <button className="btn btn-danger" onClick={() => { api.delete_task(task.id)}}> Delete</button>
-      <Link to={"/edit_task_form/"} onClick={()=>{window.task_id=task.id;}}><button className="btn btn-danger"> Edit</button></Link>
+      <button class="button" className="btn btn-danger" onClick={() => { api.delete_task(task.id)}}> Delete</button>
+      <Link class="button" to={"/edit_task_form/"} onClick={()=>{window.task_id=task.id;}}><button className="btn btn-danger"> Edit</button></Link>
     </td>
   </tr>;
 }

@@ -9,33 +9,33 @@ function Header(props) {
   let {session} = props;
   let session_info;
   if (session == null) {
-    session_info = <div className="form-inline my-2">
-      <input type="name" id="user-name" placeholder="name" />
-      <input type="password" id="password" placeholder="password" />
-      <button className="btn btn-secondary" onClick={()=>login()}>Login</button>
-      <Link to={"/create_user_form"}> register </Link>
+    session_info =
+    <div>
+      <p>name:     <input type="name" className="form-control" id="user-name" placeholder="name" /></p>
+      <p>password: <input type="password" className="form-control" id="password" placeholder="password" /></p>
+      <p><button className="btn btn-secondary" onClick={()=>login()}>Login</button>
+      <Link className="btn btn-secondary" to={"/create_user_form"}> register </Link></p>
     </div>;
   }
   else {
     let user = props.users.find(function(ee){return ee.id == props.session.user_id;}).name
-    session_info = <div className="my-2">
-      <p>Logged in as {user}</p>
-      <p><Link to={"/"} onClick={() => api.delete_session()}>logout</Link></p>
+    session_info =
+    <div className="container">
+      <div className="row ">
+      <span className="col align-self-start">Logged in as {user}</span>
+      <span className="col-md-3 offset-md-3"><Link to={"/"} onClick={() => api.delete_session()}>logout</Link></span>
+      </div>
+      <div>
+        <p><Link to={"/tasks"} onClick={() => api.list_tasks()}>tasks</Link></p>
+      </div>
     </div>;
   }
 
-  return <div className="row my-2">
-    <div className="col-4">
+  return <div>
+    <div  className="text-center">
       <h1>Task Tracker</h1>
     </div>
-    <div className="col-4">
-      <p>
-        <Link to={"/tasks"} onClick={() => api.list_tasks()}>tasks</Link>
-      </p>
-    </div>
-    <div className="col-4">
       {session_info}
-    </div>
   </div>;
 }
 

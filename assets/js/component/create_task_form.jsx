@@ -16,7 +16,8 @@ function CreateTaskForm(props) {
         {users.map(uu => <option key={uu.id} value={uu.id}> {uu.name}</option>)}
      </select>
   </p>
-  <p><Link to='/tasks'><button onClick={() => {api.create_task();}}>submit</button></Link>
+  <p>
+  <Link to='/tasks'><button onClick={() => {api.create_task();}}>submit</button></Link>
   <Link to="/tasks"><button>cancel</button></Link>
   </p>
   </div>
