@@ -6,11 +6,11 @@ server {
     server_name task3.zy-peng.com;
 
     location / {
-        proxy_pass http://localhost:6002;
+        proxy_pass https//localhost:6002;
     }
 
     location /socket {
-        proxy_pass http://localhost:6002;
+        proxy_pass https://localhost:6002;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";	 	 

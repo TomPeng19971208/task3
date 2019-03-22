@@ -1,5 +1,5 @@
 use Mix.Config
-
+import_config "./prod.secret.exs"
 # For production, don't forget to configure the url host
 # to something meaningful, Phoenix uses this information
 # when generating URLs.
@@ -10,8 +10,11 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :task3, Task3Web.Endpoint,
-  http: [:inet6, port: System.get_env("PORT") || 6002],
-  url: [host: "task3.zy-peng.com", port: 80],
+  server: true, 
+  root: ".", 
+  version: Application.spec(:phoenix_distillery, :vsn),
+  https: [:inet6, port: System.get_env("PORT"), keyfile: Path.expand("/etc/letsencrypt/live/task3.zy-peng.com/privkey.pem", __DIR__),certfile: Path.expand("/etc/letsencrypt/live/task3.zy-peng.com/fullchain.pem", __DIR__),],
+  url: [host: "task3.zy-peng.com"],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
@@ -22,7 +25,7 @@ config :logger, level: :info
 # To get SSL working, you will need to add the `https` key
 # to the previous section and set your `:url` port to 443:
 #
-#     config :task3, Task3Web.Endpoint,
+#       config :task3, Task3Web.Endpoint,
 #       ...
 #       url: [host: "example.com", port: 443],
 #       https: [
@@ -68,4 +71,13 @@ config :logger, level: :info
 
 # Finally import the config/prod.secret.exs which should be versioned
 # separately.
-import_config "prod.secret.exs"
+
+path = Path.expand("~/.config/prod.secret.exs")
+unless File.exists?(path) do
+  secret = Base.encode16(:crypto.strong_rand_bytes(32))
+  File.write!(path, secret)
+end
+secret = File.read!(path)
+
+config :tracker1, Tracker1Web.Endpoint,
+  secret_key_base: secret

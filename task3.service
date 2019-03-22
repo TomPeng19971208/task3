@@ -3,8 +3,8 @@ Description=Task Tracker
 
 [Service]
 Type=simple
-User=tracker
-Group=tracker
+User=root
+Group=root
 Restart=on-failure
 Environment=MIX_ENV=prod "PORT=6002"
 Environment=LANG=en_US.UTF-8

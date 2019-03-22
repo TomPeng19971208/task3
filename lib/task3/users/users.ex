@@ -121,6 +121,6 @@ defmodule Task3.Users do
 
   def authenticate_user(name, password) do
     Repo.get_by(User, name: name)
-    |> Argon2.check_pass(password)
+    |> Comeonin.Argon2.check_pass(password)
   end
 end

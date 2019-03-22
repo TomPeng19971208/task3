@@ -45,6 +45,7 @@ defmodule Task3.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:distillery, "~> 2.0"},
       {:argon2_elixir, "~> 1.3"},
+      {:comeonin, "~> 4.1"},
     ]
   end
 

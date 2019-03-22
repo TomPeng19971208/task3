@@ -7,7 +7,7 @@ use Mix.Config
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
 config :task3, Task3Web.Endpoint,
-  http: [port: 6002],
+  http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
@@ -68,8 +68,8 @@ config :phoenix, :plug_init_mode, :runtime
 
 # Configure your database
 config :task3, Task3.Repo,
-  username: "tracker",
+  username: "tracker3",
   password: "P@ssw0rd",
   database: "task3_dev",
-  hostname: "45.63.17.107",
+  hostname: "localhost",
   pool_size: 10
