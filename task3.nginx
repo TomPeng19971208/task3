@@ -3,14 +3,14 @@ server {
     listen [::]:80;
 
     # TODO: This should be your server name.
-    server_name task2.zy-peng.com;
+    server_name task3.zy-peng.com;
 
     location / {
-        proxy_pass http://localhost:6001;
+        proxy_pass http://localhost:6002;
     }
 
     location /socket {
-        proxy_pass http://localhost:6001;
+        proxy_pass http://localhost:6002;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";	 	 
