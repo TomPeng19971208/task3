@@ -1,20 +1,5 @@
-# Task3
-
-To start your Phoenix server:
-
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `mix phx.server`
-
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: http://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+# Task3 -Task Tracker (SPA)
+Each task can be assigned to exactly one user, and each user can have multiple tasks. 
+An user have to register for an account and set a password before using this application. 
+After an user has logged in, he can see all of his tasks by clicking on "tasks" link at the top-left corner. 
+On tasks page, the user can edit or delete an existing task, or create a new one. 
